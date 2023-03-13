@@ -19,18 +19,13 @@ hello <- function() {
 
 loadPython <- function(pypath){
   ##need to first install devtools packages and rtools
-  if (!requireNamespace("RSQLite", quietly=TRUE)) install.packages("RSQLite")
-  require(RSQLite)
+  if (!requireNamespace("devtools", quietly=TRUE)) install.packages("devtools")
+  require(devtools)
 
-  if (!requireNamespace("RSQLite", quietly=TRUE)) install.packages("RSQLite")
-  require(RSQLite)
-
-  install.packages("devtools")
-  library(devtools)
-  install_version("reticulate", version = "1.22", repos = "http://cran.us.r-project.org") ##older version required until package is updated to handle space in filepath name for python
-  library(reticulate)
-  reticulate::use_condaenv(condaenv='C:/ProgramFiles/ArcGIS/Pro/bin/Python/envs/arcgispro-py3', required = T)
-  arcpy<-import("arcpy")
+  if (!requireNamespace("reticulate", quietly=TRUE)) install.packages("reticulate", version = "1.22", repos = "http://cran.us.r-project.org")
+  require(reticulate) ## older version required until package is updated to handle space in filepath name for python
+  reticulate::use_condaenv(condaenv=pypath, required=T)
+  arcpy <- import("arcpy")
 }
 
 
