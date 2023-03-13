@@ -13,10 +13,6 @@
 #   Check Package:             'Ctrl + Shift + E'
 #   Test Package:              'Ctrl + Shift + T'
 
-hello <- function() {
-  print("Hello, world!")
-}
-
 loadPython <- function(pypath){
   ##need to first install devtools packages and rtools
   if (!requireNamespace("devtools", quietly=TRUE)) install.packages("devtools")
